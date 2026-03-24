@@ -5,15 +5,74 @@ import { getImage } from "astro:assets";
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
-import CTA from "@components/CTA/CTASimple.astro";
+import ServiceIntro from "@components/ServiceIntro/ServiceIntro.astro";
+import WhyChooseUs from "@components/WhyChooseUs/WhyChooseUs.astro";
+import ServiceList from "@components/ServiceList/ServiceList.astro";
+import ProcessSteps from "@components/ProcessSteps/ProcessSteps.astro";
 
 // Images
 import landingImage from "@assets/images/services/henrys-professional-painting-residential-exterior-beige-stucco-two-story-home.jpg";
+import introImage from "@assets/images/services/henrys-professional-painting-residential-exterior-beige-stucco-two-story-home.jpg";
+import whyImage from "@assets/images/services/henrys-professional-painting-residential-exterior-gray-stucco-three-car-garage.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="Exterior House Painting | Stucco, Siding & Trim" description="Boost your home's curb appeal with professional exterior painting. Henry's Professional Painting specializes in stucco, siding, and trim painting in San Diego." heroImage={optimizedImage}>
+<BaseLayout title="Exterior House Painting | Stucco, Siding & Trim" description="Boost your home's curb appeal with professional exterior painting. Cornerstone Painting Co. specializes in stucco, siding, and trim painting in San Diego." heroImage={optimizedImage}>
 	<Banner title="Exterior House Painting" image={optimizedImage} />
-	<!-- Page content goes here -->
-	<CTA />
+
+	<ServiceIntro
+		topper="Exterior Residential Painting"
+		title="Curb Appeal That Lasts"
+		paragraphs={[
+			"San Diego's sun, salt air, and dry heat take a toll on exterior paint. A quality exterior coat does more than look good — it protects your home's surfaces from UV damage, moisture, and cracking. We specialize in stucco homes throughout the greater San Diego area, and we know how to prep and paint them so the finish holds up for years.",
+			"Every exterior project begins with a thorough property assessment. We identify peeling, chalking, cracks, and areas that need repair before a brush ever touches the surface. The result is a finish that looks sharp from the street and stands up to the elements."
+		]}
+		image={introImage}
+		imageAlt="freshly painted beige stucco two-story home exterior"
+		imagePosition="left"
+	/>
+
+	<WhyChooseUs
+		title="Built for San Diego's Climate"
+		backgroundImage={whyImage}
+		points={[
+			{ title: "Weather-Resistant Coatings", text: "Products rated for UV exposure and coastal conditions." },
+			{ title: "Thorough Surface Prep", text: "Pressure washing, caulking, and crack repair before any paint goes on." },
+			{ title: "Free Color Consultation", text: "We help you find the right palette for your home's architecture and neighborhood." },
+			{ title: "Licensed Since 1987", text: "Nearly four decades of exterior painting throughout San Diego County." }
+		]}
+	/>
+
+	<ServiceList
+		topper="What We Paint"
+		title="Exterior Surfaces We Handle"
+		background="light"
+		columns={2}
+		items={[
+			{ heading: "Stucco", text: "The most common exterior in San Diego — we know how to prep and coat it right." },
+			{ heading: "Wood Siding & Trim", text: "Sanded, primed, and sealed to prevent rot, peeling, and weather damage." },
+			{ heading: "Eaves & Fascia", text: "Often overlooked, always visible. We restore them to clean, finished condition." },
+			{ heading: "Front Doors & Shutters", text: "High-impact details that sharpen your home's curb appeal." },
+			{ heading: "Garage Doors", text: "Matched to your home's color scheme for a cohesive look from the street." },
+			{ heading: "Decks & Fence Staining", text: "Protection and color that extend the life of your outdoor wood surfaces." }
+		]}
+	/>
+
+	<ProcessSteps
+		title="How Your Exterior Project Works"
+		steps={[
+			{ number: "01", title: "Property Assessment", text: "We inspect every surface, identify repairs needed, and provide a detailed estimate." },
+			{ number: "02", title: "Pressure Washing & Prep", text: "Dirt, mildew, and loose paint removed. Cracks filled, surfaces primed." },
+			{ number: "03", title: "Priming & Painting", text: "Premium exterior coatings applied in proper conditions for maximum adhesion." },
+			{ number: "04", title: "Clean-Up & Inspection", text: "Full site cleanup and a walkthrough to confirm every detail meets your expectations." }
+		]}
+	/>
+
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
+
+<style>
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+</style>

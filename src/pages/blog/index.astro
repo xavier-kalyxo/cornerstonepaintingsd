@@ -12,7 +12,6 @@ import "@styles/sidebar.less";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
 import BlogRecentArticlesWithSidebar from "@layouts/BlogRecentArticlesWithSidebar.astro";
-import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
 import placeholderImage from "@assets/images/placeholder.jpg";
@@ -30,5 +29,11 @@ posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).val
 
 	<!-- Use the BlogRecentArticlesWithSidebar layout to display the recent articles in a custom sidebar layout-->
 	<BlogRecentArticlesWithSidebar posts={posts} />
-	<CTA />
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
+
+<style>
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+</style>

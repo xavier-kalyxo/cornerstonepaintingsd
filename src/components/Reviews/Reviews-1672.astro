@@ -1,0 +1,228 @@
+---
+interface Props {
+    limit?: number;
+}
+
+const { limit } = Astro.props;
+
+const reviews = [
+    {
+        name: "B Miller",
+        job: "Homeowner",
+        review: "Cornerstone Painting Co. did an amazing job on our home's interior. The crew was professional, punctual, and the attention to detail was outstanding. Our living room and kitchen look brand new!",
+    },
+    {
+        name: "Vincent M.",
+        job: "Homeowner",
+        review: "We hired Cornerstone for the exterior of our house and couldn't be happier. They prepped everything perfectly and the paint job has held up beautifully. Highly recommend their services to anyone in San Diego.",
+    },
+    {
+        name: "Alex L.",
+        job: "Homeowner",
+        review: "From the free estimate to the final walkthrough, the entire experience was top-notch. Fair pricing, quality work, and they cleaned up after themselves. Will definitely use them again for future projects.",
+    },
+    {
+        name: "Arrieana M.",
+        job: "Homeowner",
+        review: "Cornerstone's team repainted our office space over the weekend so we didn't have any downtime. The colors are exactly what we wanted and the finish is flawless. True professionals who care about their craft.",
+    },
+    {
+        name: "Leo N.",
+        job: "Homeowner",
+        review: "I've used several painters over the years and Cornerstone is by far the best. They took the time to fix some drywall issues before painting and the end result was perfect. Great communication throughout the project.",
+    },
+    {
+        name: "Brian A.",
+        job: "Homeowner",
+        review: "Outstanding work on our cabinets and trim. Cornerstone Painting Co. transformed our dated kitchen into something modern and fresh. The team was respectful of our home and very easy to work with.",
+    },
+];
+
+const displayedReviews = limit ? reviews.slice(0, limit) : reviews;
+---
+
+<!-- ============================================ -->
+<!--                   Reviews                    -->
+<!-- ============================================ -->
+<section id="reviews-1672">
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">Testimonials</span>
+            <h2 class="cs-title">Our Customer Reviews</h2>
+        </div>
+        <ul class="cs-card-group">
+            {displayedReviews.map((review) => (
+                <li class="cs-item">
+                    <div class="cs-flex-group">
+                        <span class="cs-name">
+                            {review.name}
+                            <span class="cs-job">{review.job}</span>
+                        </span>
+                    </div>
+                    <div class="wrapper">
+                        <img
+                            class="cs-item-stars"
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/yellow-stars.svg"
+                            alt="stars"
+                            width="96"
+                            height="16"
+                        />
+                        <p class="cs-review">
+                            {review.review}
+                        </p>
+                    </div>
+                    <!--Quote Icon-->
+                    <img
+                        class="cs-quote"
+                        aria-hidden="true"
+                        src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/gray-quote.svg"
+                        decoding="async"
+                        alt="quote icon"
+                        width="120"
+                        height="99"
+                    />
+                </li>
+            ))}
+        </ul>
+    </div>
+</section>
+
+<style lang="less">
+    /*-- -------------------------- -->
+<---          Reviews           -->
+<--- -------------------------- -*/
+
+    /* Mobile - 360px */
+    @media only screen and (min-width: 0rem) {
+        #reviews-1672 {
+            padding: var(--sectionPadding);
+
+            .cs-container {
+                width: 100%;
+                max-width: (1280/16rem);
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                /* 40px - 64px */
+                gap: clamp(2.5rem, 4.5vw, 4rem);
+            }
+
+            .cs-content {
+                text-align: left;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cs-title {
+                margin: (0/16rem);
+            }
+
+            .cs-card-group {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                /* 16px - 20px */
+                gap: clamp(1rem, 2.5vw, 1.25rem);
+            }
+
+            .cs-item {
+                list-style: none;
+                width: 100%;
+                /* 20px - 40px top & bottom */
+                /* 20px - 40px left & right */
+                padding: clamp(1.25rem, 3.15vw, 2.5rem)
+                    clamp(1.25rem, 3.15vw, 2.5rem);
+                background-color: #f7f7f7;
+                border-radius: 0 (14/16rem) 0 (14/16rem);
+                /* prevents padding from adding to height and width */
+                box-sizing: border-box;
+                display: flex;
+                grid-column: span 12;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+                position: relative;
+                /* clips quote icon to match border-radius */
+                overflow: hidden;
+                /* 24px - 48px */
+                gap: clamp(1.5rem, 4vw, 3rem);
+            }
+
+            .cs-flex-group {
+                /* this margin top auto will push everything up and force the cs-flex-group to the bottom of the container. This is to account for review cards with different heights because of more or less text and makes the cards more responsive to changing text */
+                margin-top: auto;
+                display: flex;
+                align-items: flex-start;
+                gap: (12/16rem);
+            }
+
+            .cs-name {
+                /* 20px - 25px */
+                font-size: (20/16rem);
+                line-height: 1.2em;
+                font-weight: 700;
+                margin: 0;
+                /* in case one card has more text than the other, this pushes up against the review text so the name and title are always at the bottom. Only works if parent is a flexbox */
+                margin-top: auto;
+                color: var(--headerColor);
+                display: block;
+            }
+
+            .cs-job {
+                /* 14px - 16px */
+                font-size: (16/16rem);
+                line-height: 1.5em;
+                font-weight: 400;
+                margin: 0;
+                color: var(--bodyTextColor);
+                display: block;
+            }
+
+            .wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: (16/16rem);
+            }
+
+            .cs-item-stars {
+                width: (108/16rem);
+                height: auto;
+            }
+
+            .cs-review {
+                /* 14px - 16px */
+                font-size: clamp(0.875rem, 1.6vw, 1.25rem);
+                line-height: 1.5em;
+                margin: 0;
+                color: var(--bodyTextColor);
+                z-index: 1;
+            }
+
+            .cs-quote {
+                width: (86/16rem);
+                height: auto;
+                position: absolute;
+                right: (0/16rem);
+                bottom: (0/16rem);
+                z-index: 0;
+            }
+        }
+    }
+
+    /* Tablet - 768px */
+    @media only screen and (min-width: 48rem) {
+        #reviews-1672 {
+            .cs-item {
+                grid-column: span 4;
+            }
+        }
+    }
+</style>

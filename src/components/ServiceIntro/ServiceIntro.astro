@@ -1,0 +1,220 @@
+---
+/**
+ * ServiceIntro — Two-column intro section with image + text.
+ * Used on service pages to introduce the specific service.
+ */
+
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+	topper: string;
+	title: string;
+	paragraphs: string[];
+	image: ImageMetadata;
+	imageAlt: string;
+	imagePosition?: "left" | "right";
+}
+
+const {
+	topper,
+	title,
+	paragraphs,
+	image,
+	imageAlt,
+	imagePosition = "right",
+} = Astro.props;
+---
+
+<section
+	id="service-intro"
+	class:list={[imagePosition === "left" && "cs-reversed"]}
+>
+	<div class="cs-container">
+		<div class="cs-content">
+			<span class="cs-topper">{topper}</span>
+			<h2 class="cs-title">{title}</h2>
+			{paragraphs.map((p) => <p class="cs-text">{p}</p>)}
+			<a href="/contact/" class="cs-button-solid">Get a Free Estimate</a>
+		</div>
+		<div class="cs-image-wrapper">
+			<Picture
+				src={image}
+				alt={imageAlt}
+				width={570}
+				formats={["avif", "webp"]}
+				pictureAttributes={{ class: "cs-picture" }}
+			/>
+			<img class="cs-brush-accent" src="/assets/decorations/brush-stroke-800w.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="800" height="800" />
+		</div>
+	</div>
+</section>
+
+<style lang="less">
+	/* Mobile - 360px */
+	@media only screen and (min-width: 0rem) {
+		#service-intro {
+			padding: var(--sectionPadding);
+
+			.cs-container {
+				width: 100%;
+				max-width: (1280/16rem);
+				margin: auto;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: clamp(2rem, 5vw, 3rem);
+			}
+
+			.cs-content {
+				text-align: left;
+				width: 100%;
+				max-width: (630/16rem);
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			.cs-topper {
+				margin-bottom: (4/16rem);
+			}
+
+			.cs-title {
+				font-family: var(--font-heading), sans-serif;
+				font-size: var(--headerFontSize);
+				font-weight: 700;
+				line-height: 1.2em;
+				margin: 0 0 1rem;
+				color: var(--headerColor);
+				position: relative;
+			}
+
+			.cs-text {
+				margin-bottom: (16/16rem);
+
+				&:last-of-type {
+					margin-bottom: (32/16rem);
+				}
+			}
+
+			.cs-image-wrapper {
+				width: 100%;
+				max-width: (570/16rem);
+				position: relative;
+			}
+
+			.cs-brush-accent {
+				width: 65%;
+				height: auto;
+				opacity: 0.12;
+				position: absolute;
+				top: -10%;
+				right: -10%;
+				z-index: -1;
+				transform: rotate(20deg);
+				pointer-events: none;
+			}
+
+			.cs-picture {
+				width: 100%;
+				border-radius: 0 (22/16rem) 0 (22/16rem);
+				overflow: hidden;
+				display: block;
+
+				img {
+					width: 100%;
+					height: auto;
+					display: block;
+				}
+			}
+
+			.cs-button-solid {
+				font-size: (16/16rem);
+				line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+				text-decoration: none;
+				font-weight: 700;
+				text-align: center;
+				margin: 0;
+				color: #fff;
+				min-width: (150/16rem);
+				padding: 0 (24/16rem);
+				background-color: var(--primary);
+				border-radius: 0 (16/16rem) 0 (16/16rem);
+				overflow: hidden;
+				display: inline-block;
+				position: relative;
+				z-index: 1;
+				box-sizing: border-box;
+
+				&:before {
+					content: "";
+					position: absolute;
+					height: 100%;
+					width: 0%;
+					background: #000;
+					opacity: 1;
+					top: 0;
+					left: 0;
+					z-index: -1;
+					transition: width 0.3s;
+				}
+
+				&:hover {
+					&:before {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	/* Desktop - 1024px */
+	@media only screen and (min-width: 64rem) {
+		#service-intro {
+			.cs-container {
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.cs-content {
+				width: 50%;
+				max-width: (522/16rem);
+				flex: none;
+			}
+
+			.cs-image-wrapper {
+				width: 45%;
+				max-width: (570/16rem);
+				flex: none;
+			}
+
+			/* Reversed layout: image on left */
+			&.cs-reversed {
+				.cs-container {
+					flex-direction: row-reverse;
+				}
+			}
+		}
+	}
+
+	/* Dark Mode */
+	@media only screen and (min-width: 0rem) {
+		body.dark-mode {
+			#service-intro {
+				.cs-topper {
+					color: var(--primaryLight);
+				}
+
+				.cs-title,
+				.cs-text {
+					color: var(--bodyTextColorWhite);
+				}
+
+				.cs-brush-accent {
+					opacity: 0.06;
+				}
+			}
+		}
+	}
+</style>

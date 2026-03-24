@@ -12,8 +12,8 @@ import heroImg from "@assets/images/hero/henrys-professional-painting-hero-inter
         <div class="cs-content">
             <h1 class="cs-title">Paint Your House Like A Dream Home</h1>
             <p class="cs-text">
-                San Diego’s trusted painting professionals since 1987. Licensed,
-                insured, and bonded — delivering flawless results for
+                Greater San Diego’s trusted painting professionals since 1987. Licensed,
+                insured, and bonded — delivering lasting results for
                 residential and commercial properties.
             </p>
             <div class="cs-button-group">
@@ -52,7 +52,7 @@ import heroImg from "@assets/images/hero/henrys-professional-painting-hero-inter
     <picture class="cs-picture">
         <Image
             src={heroImg}
-            alt="Professional painting project by Henry’s Professional Painting"
+            alt="Professional painting project by Cornerstone Painting Co."
             width="862"
             height="850"
             loading="eager"
@@ -81,7 +81,7 @@ import heroImg from "@assets/images/hero/henrys-professional-painting-hero-inter
         const closeBtn = dialog?.querySelector(".cs-modal-close") as HTMLButtonElement;
         if (!trigger || !dialog || !video || !closeBtn) return;
 
-        const videoSrc = "/assets/video/henrys-professional-painting.mp4";
+        const videoSrc = "/assets/video/cornerstone-painting-co.mp4";
 
         function openModal() {
             if (!video.querySelector("source")) {
@@ -210,7 +210,8 @@ import heroImg from "@assets/images/hero/henrys-professional-painting-hero-inter
                 margin: 0;
                 padding: 0 (24/16rem);
                 background-color: var(--primary);
-                border-radius: (4/16rem);
+                border-radius: 0 (16/16rem) 0 (16/16rem);
+                overflow: hidden;
                 display: inline-block;
                 position: relative;
                 z-index: 1;
@@ -228,7 +229,6 @@ import heroImg from "@assets/images/hero/henrys-professional-painting-hero-inter
                     top: 0;
                     left: 0;
                     z-index: -1;
-                    border-radius: (4/16rem);
                     transition: width 0.3s;
                 }
 
@@ -243,48 +243,69 @@ import heroImg from "@assets/images/hero/henrys-professional-painting-hero-inter
             .cs-button-transparent {
                 font-size: (16/16rem);
                 font-family: inherit;
-                /* 46px - 56px */
-                line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+                line-height: 1;
                 text-decoration: none;
                 font-weight: 700;
                 text-align: center;
-                margin: auto;
-                color: var(--headerColor);
+                color: #fff;
                 min-width: (150/16rem);
                 margin: 0;
-                padding: 0 (24/16rem);
-                background-color: transparent;
-                border: 1px solid var(--headerColor);
-                border-radius: (4/16rem);
+                padding: 14px 34px;
+                background: none;
+                border: none;
+                border-radius: 0;
+                overflow: visible;
                 display: inline-flex;
                 align-items: center;
                 gap: (8/16rem);
                 cursor: pointer;
                 position: relative;
                 z-index: 1;
-                /* prevents padding from adding to the width */
                 box-sizing: border-box;
-                transition: color 0.3s;
+                transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s;
 
                 &:before {
                     content: "";
                     position: absolute;
-                    height: 100%;
-                    width: 0%;
-                    background: var(--headerColor);
-                    opacity: 1;
-                    top: 0;
-                    left: 0;
+                    top: 60%;
+                    left: 50%;
+                    width: 140%;
+                    height: 500%;
+                    transform: translate(-50%, -50%) rotate(12deg) scaleX(-1);
+                    background: url('/assets/decorations/btn-brush-secondary.webp') center / 100% 100% no-repeat;
                     z-index: -1;
-                    border-radius: (4/16rem);
-                    transition: width 0.3s;
+                    pointer-events: none;
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 60%;
+                    left: 50%;
+                    width: 140%;
+                    height: 500%;
+                    transform: translate(-50%, -50%) rotate(12deg) scaleX(-1) translateY(4px) scale(0.95);
+                    background: url('/assets/decorations/btn-brush-secondary.webp') center / 100% 100% no-repeat;
+                    filter: blur(12px) brightness(0.7);
+                    opacity: 0;
+                    z-index: -2;
+                    pointer-events: none;
+                    transition: opacity 0.35s, transform 0.35s;
                 }
 
                 &:hover {
-                    color: #fff;
-                    &:before {
-                        width: 100%;
+                    transform: scale(1.06) rotate(-1deg);
+                    filter: brightness(0.85);
+
+                    &:after {
+                        opacity: 0.35;
+                        transform: translate(-50%, -50%) rotate(12deg) scaleX(-1) translateY(6px) scale(1);
                     }
+                }
+
+                &:active {
+                    transform: scale(0.97) rotate(0deg);
+                    transition-duration: 0.1s;
                 }
             }
 

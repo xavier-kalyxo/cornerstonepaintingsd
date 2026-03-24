@@ -5,18 +5,75 @@ import { getImage } from "astro:assets";
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
-import FAQ from "@components/FAQ/FAQ.astro";
 import SideBySide from "@components/SideBySide/SideBySide.astro";
-import CTA from "@components/CTA/CTASimple.astro";
+import WhyChooseUs from "@components/WhyChooseUs/WhyChooseUs.astro";
+import ProcessSteps from "@components/ProcessSteps/ProcessSteps.astro";
+import Reviews from "@components/Reviews/Reviews-1672.astro";
+import FAQ from "@components/FAQ/FAQ.astro";
 
 // Images
 import landingImage from "@assets/images/hero/henrys-professional-painting-hero-home-1920w.jpeg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="About Us | San Diego's Trusted Painters Since 1987" description="Learn about Henry's Professional Painting — a family-owned painting company serving La Mesa and Greater San Diego for over 35 years. Meet the team behind the brush." heroImage={optimizedImage}>
+<BaseLayout title="About Us | Chula Vista's Trusted Painters Since 1987" description="Learn about Cornerstone Painting Co. — Chula Vista's trusted painting company serving Greater San Diego since 1987. Licensed, insured, and bonded for your peace of mind." heroImage={optimizedImage}>
 	<Banner title="About Us" image={optimizedImage} />
 	<SideBySide />
+	<WhyChooseUs
+		topper="Why Cornerstone"
+		title="What Sets Us Apart"
+		points={[
+			{
+				title: "37+ Years of Experience",
+				text: "Painting homes and businesses across Greater San Diego since 1987. We've seen every surface, every challenge, and every trend.",
+			},
+			{
+				title: "Licensed, Insured & Bonded",
+				text: "Full liability coverage and California state licensing give you peace of mind from estimate to final walkthrough.",
+			},
+			{
+				title: "Premium Materials",
+				text: "We use top-tier paints from Sherwin-Williams and Benjamin Moore — the right product for every surface and condition.",
+			},
+			{
+				title: "Free Color Consultation",
+				text: "Not sure where to start? We help you choose the perfect palette for your space at no extra cost.",
+			},
+		]}
+	/>
+	<ProcessSteps
+		topper="How We Work"
+		title="From First Call to Final Coat"
+		steps={[
+			{
+				number: "01",
+				title: "Consultation",
+				text: "We visit your property, listen to your goals, and assess the scope of work — no pressure, no obligation.",
+			},
+			{
+				number: "02",
+				title: "Detailed Estimate",
+				text: "You receive a clear, written estimate with pricing, timeline, and material recommendations — no hidden fees.",
+			},
+			{
+				number: "03",
+				title: "Prep & Paint",
+				text: "Our crew handles surface prep, priming, and application with care. We protect your floors, furniture, and landscaping.",
+			},
+			{
+				number: "04",
+				title: "Final Walkthrough",
+				text: "We walk through the finished project with you to make sure every detail meets your expectations before we call it done.",
+			},
+		]}
+	/>
+	<Reviews limit={3} />
 	<FAQ />
-	<CTA />
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
+
+<style>
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+</style>

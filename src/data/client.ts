@@ -1,31 +1,31 @@
 // ===== SITE CONSTANTS =====
 export const SITE = {
-	title: "Henry's Professional Painting",
+	title: "Cornerstone Painting Co.",
 	tagline: "Trusted Since 1987",
-	description: "Henry's Professional Painting is San Diego's trusted painting specialist for residential and commercial clients. Licensed, insured, and bonded — serving La Mesa and Greater San Diego since 1987.",
+	description: "Cornerstone Painting Co. is Chula Vista's trusted painting specialist for residential and commercial clients. Licensed, insured, and bonded — serving Greater San Diego since 1987.",
 	url: "https://www.yourwebsite.com",
-	author: "Henry's Professional Painting",
+	author: "Cornerstone Painting Co.",
 	locale: "en",
 };
 
 // ===== BUSINESS INFO =====
 export const BUSINESS = {
 	name: SITE.title,
-	email: "info@henrysprofessionalpainting.com",
-	phoneForTel: "619-644-5570",
-	phoneFormatted: "(619) 644-5570",
+	email: "info@example.com",
+	phoneForTel: "555-555-5555",
+	phoneFormatted: "(555) 555-5555",
 	logo: "/assets/favicons/favicon.svg",
 	address: {
-		lineOne: "La Mesa",
+		lineOne: "Chula Vista",
 		lineTwo: "",
-		city: "La Mesa",
+		city: "Chula Vista",
 		state: "CA",
-		zip: "91942",
-		mapLink: "https://goo.gl/maps/LaMesaCA",
+		zip: "91910",
+		mapLink: "https://maps.google.com/?q=Chula+Vista,+CA+91910",
 	},
 	socials: {
-		facebook: "https://www.facebook.com/HenrysProfessionalPainting",
-		instagram: "https://www.instagram.com/henrys_professional_painting/",
+		facebook: "https://www.facebook.com/CornerstonePaintingCoSD",
+		instagram: "https://www.instagram.com/cornerstone_painting_co/",
 	},
 };
 

@@ -5,16 +5,21 @@ import { getImage } from "astro:assets";
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
-import ReviewsSection from "@components/Reviews/Reviews.astro";
-import CTA from "@components/CTA/CTASimple.astro";
+import ReviewsSection from "@components/Reviews/Reviews-1672.astro";
 
 // Images
 import landingImage from "@assets/images/hero/henrys-professional-painting-hero-interior-residential-painting-1920w.jpeg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="Customer Reviews | See What Our Clients Say" description="Read reviews from satisfied homeowners and businesses who trust Henry's Professional Painting for their interior and exterior painting projects in San Diego." heroImage={optimizedImage}>
+<BaseLayout title="Customer Reviews | See What Our Clients Say" description="Read reviews from satisfied homeowners and businesses who trust Cornerstone Painting Co. for their interior and exterior painting projects in San Diego." heroImage={optimizedImage}>
 	<Banner title="Reviews" image={optimizedImage} />
 	<ReviewsSection />
-	<CTA />
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
+
+<style>
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+</style>

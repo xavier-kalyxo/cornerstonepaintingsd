@@ -5,15 +5,20 @@ import { getImage } from "astro:assets";
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
-import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
 import landingImage from "@assets/images/services/henrys-professional-painting-residential-exterior-two-story-gray-stucco-complete.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="Residential Painting Services | Interior & Exterior" description="Professional house painting services in San Diego. From interior repaints to full exterior transformations, Henry's Professional Painting delivers lasting results." heroImage={optimizedImage}>
+<BaseLayout title="Residential Painting Services | Interior & Exterior" description="Professional house painting services in San Diego. From interior repaints to full exterior transformations, Cornerstone Painting Co. delivers lasting results." heroImage={optimizedImage}>
 	<Banner title="Residential Painting" image={optimizedImage} />
 	<!-- Page content goes here -->
-	<CTA />
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
+
+<style>
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+</style>

@@ -15,7 +15,7 @@ import skyscraperImage from "@assets/images/gallery/henrys-professional-painting
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="Contact Us | Get a Free Painting Estimate" description="Request a free painting estimate from Henry's Professional Painting. Call (619) 644-5570 or fill out our form. Serving La Mesa, San Diego, and surrounding areas." heroImage={optimizedImage}>
+<BaseLayout title="Contact Us | Get a Free Painting Estimate" description="Request a free painting estimate from Cornerstone Painting Co. Call (619) 397-2840 or fill out our form. Serving Chula Vista and Greater San Diego." heroImage={optimizedImage}>
 	<Banner title="Contact" image={optimizedImage} />
 
 	<section id="cs-contact">
@@ -24,7 +24,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 				<div class="cs-content">
 					<span class="cs-topper">Contact</span>
 					<h2 class="cs-title">Get in Touch</h2>
-					<p class="cs-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus elementum ullamcorper ipsum porttitor aliquam. Id magna urna ultrices odio pulvinar. Sed ut.</p>
+					<p class="cs-text">Ready to start your next painting project? Fill out the form below and we'll get back to you within one business day with a free, no-obligation estimate.</p>
 				</div>
 				<label>
 					Name
@@ -58,13 +58,8 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 				<!--Address-->
 				<span class="cs-header">Address</span>
 				<a class="cs-link" href={BUSINESS.address.mapLink}>
-					{BUSINESS.address.lineOne},
-					<br />
-					{BUSINESS.address.lineTwo},
-					<br />
 					<span class="cs-block">
-						{BUSINESS.address.city}
-						{BUSINESS.address.state}
+						{BUSINESS.address.city}, {BUSINESS.address.state}
 						{BUSINESS.address.zip}
 					</span>
 				</a>

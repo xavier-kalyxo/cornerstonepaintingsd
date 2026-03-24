@@ -5,15 +5,71 @@ import { getImage } from "astro:assets";
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
-import CTA from "@components/CTA/CTASimple.astro";
+import ServiceIntro from "@components/ServiceIntro/ServiceIntro.astro";
+import ProcessSteps from "@components/ProcessSteps/ProcessSteps.astro";
+import ServiceList from "@components/ServiceList/ServiceList.astro";
+import WhyChooseUs from "@components/WhyChooseUs/WhyChooseUs.astro";
 
 // Images
 import landingImage from "@assets/images/hero/henrys-professional-painting-hero-interior-commercial-painting-1920w.jpeg";
+import introImage from "@assets/images/hero/henrys-professional-painting-hero-interior-commercial-painting-1920w.jpeg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
 <BaseLayout title="Interior Commercial Painting | Offices & Retail Spaces" description="Professional interior commercial painting in San Diego. We work around your schedule to minimize downtime for offices, retail stores, and restaurants." heroImage={optimizedImage}>
 	<Banner title="Interior Commercial Painting" image={optimizedImage} />
-	<!-- Page content goes here -->
-	<CTA />
+
+	<ServiceIntro
+		topper="Commercial Interior Painting"
+		title="Spaces Your Clients and Team Notice"
+		paragraphs={[
+			"A well-maintained interior sends a clear message to clients, customers, and employees: this is a business that pays attention. Whether you run an office, a retail store, or a restaurant, fresh paint improves the atmosphere and protects your surfaces from daily wear.",
+			"We work around your operations — nights, weekends, or phased scheduling — so there's no disruption to your business. We use low-VOC, fast-curing products that are safe for occupied buildings and ready for foot traffic quickly."
+		]}
+		image={introImage}
+		imageAlt="professional interior commercial painting project in progress"
+		imagePosition="right"
+	/>
+
+	<ProcessSteps
+		title="Minimal Disruption, Maximum Results"
+		steps={[
+			{ number: "01", title: "Schedule & Scope", text: "We assess your space, confirm the timeline, and plan around your hours of operation." },
+			{ number: "02", title: "Off-Hours Execution", text: "Our crew works evenings, weekends, or in phases — whatever keeps your business running." },
+			{ number: "03", title: "Final Walkthrough", text: "A detailed inspection with your team before we consider the job complete." }
+		]}
+	/>
+
+	<ServiceList
+		topper="Spaces We Serve"
+		title="Commercial Interiors"
+		background="dark"
+		columns={2}
+		items={[
+			{ heading: "Office Spaces", text: "Conference rooms, lobbies, hallways, and open floor plans — refreshed and professional." },
+			{ heading: "Retail Stores", text: "On-brand color and finish that supports the shopping experience." },
+			{ heading: "Restaurants & Hospitality", text: "Durable, washable finishes that hold up to high-traffic dining environments." },
+			{ heading: "Medical & Dental Offices", text: "Clean, calming palettes applied with products safe for healthcare settings." },
+			{ heading: "Warehouses & Industrial", text: "Epoxy floors, safety markings, and durable coatings for demanding environments." },
+			{ heading: "Common Areas & Lobbies", text: "The first thing visitors see — we make sure it sets the right tone." }
+		]}
+	/>
+
+	<WhyChooseUs
+		title="Built for Business"
+		points={[
+			{ title: "Minimal Downtime", text: "We paint around your schedule so your operations keep running." },
+			{ title: "After-Hours & Weekends", text: "Night and weekend crews available for zero-disruption projects." },
+			{ title: "Commercial-Grade Materials", text: "Low-VOC, fast-curing, and durable products built for high-traffic spaces." },
+			{ title: "Fully Licensed & Bonded", text: "Full liability coverage and compliance with commercial building codes." }
+		]}
+	/>
+
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
+
+<style>
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+</style>

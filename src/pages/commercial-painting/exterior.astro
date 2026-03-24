@@ -5,15 +5,58 @@ import { getImage } from "astro:assets";
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
-import CTA from "@components/CTA/CTASimple.astro";
+import ServiceIntro from "@components/ServiceIntro/ServiceIntro.astro";
+import WhyChooseUs from "@components/WhyChooseUs/WhyChooseUs.astro";
+import ProcessSteps from "@components/ProcessSteps/ProcessSteps.astro";
+import Reviews from "@components/Reviews/Reviews-1672.astro";
 
 // Images
 import landingImage from "@assets/images/hero/henrys-professional-painting-hero-exterior-commercial-painting-1920w.jpeg";
+import introImage from "@assets/images/services/henrys-professional-painting-commercial-exterior-charcoal-black-storefront.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="Exterior Commercial Painting | Storefronts & Buildings" description="Make a strong first impression with professional exterior commercial painting. Henry's Professional Painting serves businesses throughout San Diego County." heroImage={optimizedImage}>
+<BaseLayout title="Exterior Commercial Painting | Storefronts & Buildings" description="Make a strong first impression with professional exterior commercial painting. Cornerstone Painting Co. serves businesses throughout San Diego County." heroImage={optimizedImage}>
 	<Banner title="Exterior Commercial Painting" image={optimizedImage} />
-	<!-- Page content goes here -->
-	<CTA />
+
+	<ServiceIntro
+		topper="Commercial Exterior Painting"
+		title="First Impressions Start Outside"
+		paragraphs={[
+			"Your building's exterior is the first thing clients, tenants, and customers see. Peeling paint, faded colors, and visible wear undermine trust before anyone walks through the door. A professional exterior finish protects your investment and projects the image your business deserves.",
+			"We handle storefronts, office buildings, multi-unit complexes, and industrial properties throughout San Diego County. Our team works efficiently and safely, with full compliance to local codes and HOA requirements."
+		]}
+		image={introImage}
+		imageAlt="freshly painted commercial storefront exterior in charcoal black"
+		imagePosition="left"
+	/>
+
+	<WhyChooseUs
+		title="Why San Diego Businesses Trust Cornerstone"
+		points={[
+			{ title: "37+ Years in Business", text: "Established in 1987, serving commercial clients across greater San Diego." },
+			{ title: "Full Liability Coverage", text: "Licensed, insured, and bonded — your property is protected at every stage." },
+			{ title: "Brand-Accurate Color Matching", text: "We match your brand standards precisely so your building represents you." },
+			{ title: "HOA & Code Compliant", text: "We navigate local regulations and HOA guidelines so you don't have to." }
+		]}
+	/>
+
+	<ProcessSteps
+		title="From Bid to Final Coat"
+		steps={[
+			{ number: "01", title: "Site Survey & Bid", text: "We assess the property, discuss your goals, and deliver a clear, detailed estimate." },
+			{ number: "02", title: "Surface Prep & Repairs", text: "Power washing, caulking, patching, and priming — the foundation of a lasting finish." },
+			{ number: "03", title: "Application & Coatings", text: "Commercial-grade exterior paints applied by experienced crews in proper conditions." },
+			{ number: "04", title: "Punch List & Sign-Off", text: "A detailed final walkthrough with your team to confirm every surface meets standard." }
+		]}
+	/>
+
+	<Reviews limit={2} />
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
+
+<style>
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+</style>

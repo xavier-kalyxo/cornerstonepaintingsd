@@ -6,15 +6,20 @@ import { getImage } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
 import FAQ from "@components/FAQ/FAQ.astro";
-import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
 import landingImage from "@assets/images/hero/henrys-professional-painting-hero-home-1920w.jpeg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="FAQ | Frequently Asked Questions About Our Painting Services" description="Get answers to common questions about our painting process, pricing, timelines, and more. Henry's Professional Painting serves San Diego and La Mesa." heroImage={optimizedImage}>
+<BaseLayout title="FAQ | Frequently Asked Questions About Our Painting Services" description="Get answers to common questions about our painting process, pricing, timelines, and more. Cornerstone Painting Co. has served Greater San Diego since 1987." heroImage={optimizedImage}>
 	<Banner title="Frequently Asked Questions" image={optimizedImage} />
 	<FAQ />
-	<CTA />
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
+
+<style>
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+</style>

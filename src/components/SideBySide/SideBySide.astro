@@ -14,28 +14,27 @@ import construction from "@assets/images/services/henrys-professional-painting-r
 	<div class="cs-container">
 		<!-- Left Image Section -->
 		<div class="cs-left">
-			<Picture src={cabinets2} alt="cabinets" width={522} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} priority />
-			<Picture src={construction} alt="house" width={390} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} priority />
+			<Picture src={cabinets2} alt="interior kitchen cabinet painting by Cornerstone Painting Co." width={522} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} priority />
+			<Picture src={construction} alt="residential exterior painting project in San Diego" width={390} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} priority />
+			<img class="cs-brush-accent" src="/assets/decorations/brush-stroke-800w.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="800" height="800" />
 		</div>
 		<!-- Right Content Section-->
 		<div class="cs-right">
 			<span class="cs-topper">About Us</span>
-			<h2 class="cs-title">About Company Title</h2>
+			<h2 class="cs-title">Trusted Craftsmanship Since 1987</h2>
 			<p class="cs-text">
-				In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti
-				sociosqu ad litora torquent per.
+				Cornerstone Painting Co. has been serving homeowners and businesses across Greater San Diego for over 37 years. What started as a one-man operation has grown into one of the area's most trusted painting companies — built on honest work, fair pricing, and results that speak for themselves.
 			</p>
 			<p class="cs-text">
-				In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti
-				sociosqu ad litora torquent per.
+				We're licensed, insured, and bonded in the state of California, and we treat every project — from a single accent wall to a full commercial repaint — with the same level of care and attention to detail. Our crew takes pride in clean prep work, premium materials, and leaving your space looking better than you imagined.
 			</p>
 			<div class="cs-flex-group">
-				<p class="cs-flex-p">In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.</p>
-				<span class="cs-name">Justin Time</span>
-				<span class="cs-job">CEO-Founder</span>
+				<p class="cs-flex-p">We don't cut corners, and we don't disappear mid-project. When you work with us, you get a team that shows up on time, communicates clearly, and stands behind every coat of paint.</p>
+				<span class="cs-name">Cornerstone Painting Co.</span>
+				<span class="cs-job">Serving Greater San Diego</span>
 				<Icon name="quote-white" class="cs-quote-icon" />
 			</div>
-			<a href="/about/" class="cs-button-solid">More About Us</a>
+			<a href="/contact/" class="cs-button-solid">Get a Free Estimate</a>
 		</div>
 	</div>
 </section>
@@ -70,8 +69,20 @@ import construction from "@assets/images/services/henrys-professional-painting-r
 				position: relative;
 			}
 
+			.cs-brush-accent {
+				width: 70%;
+				height: auto;
+				opacity: 0.12;
+				position: absolute;
+				top: -8%;
+				left: -12%;
+				z-index: -1;
+				transform: rotate(-15deg);
+				pointer-events: none;
+			}
+
 			.cs-picture {
-				border-radius: (24/16em);
+				border-radius: 0 (24/16em) 0 (24/16em);
 				display: block;
 				position: absolute;
 				/* clips img tag corners */
@@ -239,6 +250,10 @@ import construction from "@assets/images/services/henrys-professional-painting-r
 
 				.cs-quote-icon {
 					opacity: 0.2;
+				}
+
+				.cs-brush-accent {
+					opacity: 0.06;
 				}
 			}
 		}

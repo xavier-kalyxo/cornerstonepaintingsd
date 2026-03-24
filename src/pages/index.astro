@@ -5,17 +5,22 @@ import Hero from "@components/Hero/Hero-668.astro";
 import SideBySide1285 from "@components/SideBySide/SideBySide-1285.astro";
 import Services from "@components/Services/Services-1252.astro";
 import Gallery from "@components/Gallery/Gallery.astro";
-import Testimonials from "@components/Testimonials/Testimonials.astro";
+import Reviews from "@components/Reviews/Reviews-1672.astro";
 import FAQ from "@components/FAQ/FAQ.astro";
-import CTASimple from "@components/CTA/CTASimple.astro";
 ---
 
-<BaseLayout title="San Diego Painting Contractors | Residential & Commercial" description="Henry's Professional Painting offers expert interior and exterior painting for homes and businesses in San Diego and La Mesa. Licensed, insured, and trusted since 1987. Get a free estimate today.">
+<BaseLayout title="San Diego Painting Contractors | Residential & Commercial" description="Cornerstone Painting Co. offers expert interior and exterior painting for homes and businesses in San Diego. Licensed, insured, and trusted since 1987. Get a free estimate today.">
 	<Hero />
 	<SideBySide1285 />
 	<Services />
 	<Gallery />
-	<Testimonials />
+	<Reviews limit={3} />
 	<FAQ />
-	<CTASimple />
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
+
+<style>
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+</style>

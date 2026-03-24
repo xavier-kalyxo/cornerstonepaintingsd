@@ -1,0 +1,650 @@
+---
+// Utils
+import { Image } from "astro:assets";
+import { getCurrentYear } from "@js/utils";
+
+// Data
+import { BUSINESS } from "@data/client";
+import navData from "@data/navData.json";
+import henrysLogo from "@assets/images/cornerstone-logo.png";
+
+const currentYear = getCurrentYear();
+
+// Extract services from navData
+const servicesNav = navData.find((item) => item.key === "Services");
+const services = servicesNav?.children ?? [];
+
+// Pages for the "Information" column (exclude Services and Home)
+const infoLinks = navData.filter(
+    (item) => item.key !== "Services" && item.key !== "Home",
+);
+---
+
+<!--
+NOTE: because of the overlapping nature of the CTA section, you need to add
+padding-bottom: calc(250 / 16 * 1rem); to the section directly above the footer.
+-->
+<footer id="cs-footer-1291">
+    <div class="cs-container">
+        <!-- CTA Banner -->
+        <div id="cta-1291">
+            <div class="cs-content">
+                <h2 class="cs-title">
+                    Schedule your free estimate today. Let Cornerstone bring new
+                    life to your home or business.
+                </h2>
+                <a href={`tel:${BUSINESS.phoneForTel}`} class="cs-button-solid"
+                    >Call {BUSINESS.phoneFormatted}</a
+                >
+            </div>
+            <picture class="cs-background">
+                <source
+                    media="(max-width: 600px)"
+                    srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/cta-waves.svg"
+                />
+                <source
+                    media="(min-width: 601px)"
+                    srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/cta-waves-t.svg"
+                />
+                <img
+                    loading="lazy"
+                    decoding="async"
+                    src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/cta-waves-t.svg"
+                    alt=""
+                    width="1280"
+                    height="278"
+                    aria-hidden="true"
+                />
+            </picture>
+        </div>
+        <div class="cs-wrapper">
+            <!-- Logo Group -->
+            <div class="cs-logo-group">
+                <a
+                    aria-label={`Return to ${BUSINESS.name} Home page`}
+                    class="cs-logo"
+                    href="/"
+                >
+                    <Image
+                        class="cs-logo-img"
+                        src={henrysLogo}
+                        alt={BUSINESS.name}
+                        width={240}
+                    />
+                </a>
+                <p class="cs-text">
+                    Serving Greater San Diego with quality residential and
+                    commercial painting since 1987. Licensed, insured, and
+                    bonded for your peace of mind.
+                </p>
+                <a href={`mailto:${BUSINESS.email}`} class="cs-link">
+                    <img
+                        class="cs-link-icon"
+                        aria-hidden="true"
+                        loading="lazy"
+                        decoding="async"
+                        src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/construction-mail.svg"
+                        alt=""
+                        width="24"
+                        height="24"
+                    />
+                    {BUSINESS.email}
+                </a>
+            </div>
+            <!-- Services Links -->
+            <ul class="cs-nav">
+                <li class="cs-nav-li">
+                    <span class="cs-header">Services</span>
+                </li>
+                {
+                    services.map((service) => (
+                        <li class="cs-nav-li">
+                            <a class="cs-nav-link" href={service.url}>
+                                {service.key}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+            <!-- Information Links -->
+            <ul class="cs-nav">
+                <li class="cs-nav-li">
+                    <span class="cs-header">Information</span>
+                </li>
+                {
+                    infoLinks.map((link) => (
+                        <li class="cs-nav-li">
+                            <a class="cs-nav-link" href={link.url}>
+                                {link.key}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+            <!-- Contact -->
+            <ul class="cs-nav">
+                <li class="cs-nav-li">
+                    <span class="cs-header">Contact</span>
+                </li>
+                <li class="cs-nav-li">
+                    <a class="cs-nav-link" href={`tel:${BUSINESS.phoneForTel}`}>
+                        {BUSINESS.phoneFormatted}
+                    </a>
+                </li>
+                <li class="cs-nav-li">
+                    <a class="cs-nav-link" href={`mailto:${BUSINESS.email}`}>
+                        {BUSINESS.email}
+                    </a>
+                </li>
+                <li class="cs-nav-li">
+                    <a
+                        class="cs-nav-link"
+                        href={BUSINESS.address.mapLink}
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        {BUSINESS.address.city}, {BUSINESS.address.state}
+                        {BUSINESS.address.zip}
+                    </a>
+                </li>
+                {
+                    BUSINESS.socials.facebook && (
+                        <li class="cs-nav-li">
+                            <a
+                                class="cs-nav-link"
+                                href={BUSINESS.socials.facebook}
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Facebook
+                            </a>
+                        </li>
+                    )
+                }
+                {
+                    BUSINESS.socials.instagram && (
+                        <li class="cs-nav-li">
+                            <a
+                                class="cs-nav-link"
+                                href={BUSINESS.socials.instagram}
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Instagram
+                            </a>
+                        </li>
+                    )
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="cs-bottom">
+        <span class="cs-copyright">
+            Copyright &copy; {currentYear}.
+            <a class="cs-copyright-link" href="/">
+                {BUSINESS.name}.
+            </a>
+            All Rights Reserved.
+        </span>
+        <span class="cs-copyright cs-credit">
+            Designed and Hand Coded by
+            <a
+                class="cs-copyright-link"
+                href="https://oui.digital"
+                target="_blank"
+                rel="noopener">Oui Digital</a
+            >
+        </span>
+    </div>
+    <!--Floating Circles-->
+    <div class="cs-floater-wrapper" aria-hidden="true">
+        <span class="cs-floater"> </span>
+    </div>
+</footer>
+
+<style lang="less">
+    /*-- -------------------------- -->
+<---            CTA             --->
+<--- -------------------------- -*/
+
+    /* Mobile - 360px */
+    @media only screen and (min-width: 0rem) {
+        #cta-1291 {
+            width: 100%;
+            max-width: (1280/16rem);
+            margin: auto;
+            margin-bottom: (-90/16rem);
+            border-radius: 0 (28/16rem) 0 (28/16rem);
+            overflow: hidden;
+            /* 40px - 80px */
+            padding: clamp(2.5rem, 5vw, 5rem);
+            /* prevents padding and border from affecting height and width */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 15;
+            transform: translateY(-9.375rem);
+
+            .cs-content {
+                /* set text align to left if content needs to be left aligned */
+                text-align: center;
+                width: 100%;
+                /* changes to 100% at tablet */
+                max-width: (400/16rem);
+                display: flex;
+                flex-direction: column;
+                /* centers content horizontally, set to flex-start to left align */
+                align-items: center;
+                gap: (24/16rem);
+            }
+            .cs-title {
+                width: 79%;
+                margin: 0;
+                color: var(--bodyTextColorWhite);
+                text-wrap: pretty;
+            }
+
+            .cs-button-solid {
+                font-size: (16/16rem);
+                /* 46px - 56px */
+                line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+                text-decoration: none;
+                font-weight: 700;
+                text-align: center;
+                margin: 0;
+                color: var(--primary);
+                min-width: (150/16rem);
+                padding: 0 (24/16rem);
+                border-radius: 0 (16/16rem) 0 (16/16rem);
+                overflow: hidden;
+                background-color: #fff;
+                display: inline-block;
+                position: relative;
+                z-index: 1;
+                /* prevents padding from adding to the width */
+                box-sizing: border-box;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 0%;
+                    background: #000;
+                    opacity: 1;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    transition: width 0.3s;
+                }
+
+                &:hover {
+                    color: #fff;
+                    &:before {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .cs-background {
+                width: 100%;
+                height: 100%;
+                background-color: var(--primary);
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    /* Tablet - 768px */
+    @media only screen and (min-width: 48rem) {
+        #cta-1291 {
+            .cs-content {
+                text-align: left;
+                max-width: 100%;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    /* Desktop - 1300px */
+    @media only screen and (min-width: 81.25rem) {
+        #cta-1291 {
+            margin-bottom: (0/16rem);
+            .cs-content {
+                flex-direction: row;
+            }
+        }
+    }
+
+    /*-- -------------------------- -->
+<---          Footer            --->
+<--- -------------------------- -*/
+
+    /* Mobile - 360px */
+    @media only screen and (min-width: 0rem) {
+        #cs-footer-1291 {
+            padding: var(--sectionPadding);
+            padding-top: 0;
+            padding-bottom: (20/16rem);
+            position: relative;
+            z-index: 25;
+
+            .cs-container {
+                width: 100%;
+                margin: auto;
+            }
+
+            .cs-logo-group {
+                /* takes up all the space, lets the other ul's wrap below it */
+                width: 100%;
+                position: relative;
+            }
+
+            .cs-logo {
+                width: (216/16rem);
+                height: auto;
+                display: block;
+                /* 20px - 24px */
+                margin: 0 0 clamp(1.25rem, 2vw, 1.5rem) -3rem;
+            }
+
+            .cs-logo-img {
+                width: 100%;
+                height: auto;
+
+                &.dark {
+                    display: none;
+                }
+            }
+            .cs-link {
+                font-size: (14/16rem);
+                line-height: 1.5em;
+                text-decoration: none;
+                margin: 0;
+                color: var(--headerColor);
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: (12/16rem);
+                transition: color 0.3s;
+
+                &:hover {
+                    color: var(--primary);
+                }
+            }
+
+            .cs-text {
+                font-size: (14/16rem);
+                line-height: 1.5em;
+                margin: 0 0 (16/16rem) 0;
+                color: var(--bodyTextColor);
+            }
+
+            /* Navigation Links */
+            .cs-wrapper {
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                column-gap: (24/16rem);
+                row-gap: (36/16rem);
+            }
+
+            .cs-nav {
+                width: 45%;
+                max-width: (180/16rem);
+                padding: 0;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: (16/16rem);
+            }
+
+            .cs-nav-li {
+                list-style: none;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .cs-header {
+                font-size: (16/16rem);
+                line-height: 1.2em;
+                font-weight: 700;
+                margin-bottom: (8/16rem);
+                color: var(--headerColor);
+                position: relative;
+                display: block;
+            }
+
+            .cs-nav-link {
+                font-size: (14/16rem);
+                text-decoration: none;
+                line-height: 1.5em;
+                width: auto;
+                color: var(--bodyTextColor);
+                position: relative;
+                display: inline-block;
+                transition: color 0.3s;
+                word-break: break-word;
+
+                &:before {
+                    /* underline */
+                    content: "";
+                    width: 0%;
+                    height: (2/16rem);
+                    background: currentColor;
+                    opacity: 1;
+                    position: absolute;
+                    display: block;
+                    bottom: (-2/16rem);
+                    left: 0;
+                    transition: width 0.3s;
+                }
+
+                &:hover {
+                    color: var(--primary);
+                    &:before {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .cs-bottom {
+                max-width: (1280/16rem);
+                margin: auto;
+                /* 48px - 100px */
+                margin-top: clamp(3rem, 6vw, 6.25rem);
+                /* 20px - 32px */
+                padding: clamp(1.25rem, 3vw, 2rem) 0 0 0;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                column-gap: (36/16rem);
+                row-gap: (12/16rem);
+            }
+
+            .cs-copyright,
+            .cs-copyright-link {
+                font-size: (14/16rem);
+                line-height: 1.5em;
+                color: var(--bodyTextColor);
+            }
+
+            .cs-copyright {
+                text-align: center;
+                width: 100%;
+            }
+
+            .cs-copyright-link {
+                text-decoration: none;
+                transition: color 0.3s;
+                &:hover {
+                    color: var(--secondary);
+                }
+            }
+
+            .cs-floater-wrapper {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: -1;
+                pointer-events: none;
+            }
+
+            .cs-floater {
+                width: (506/16rem);
+                height: (506/16rem);
+                margin-left: (550/16rem);
+                border-radius: 50%;
+                border: 2px solid var(--primary);
+                opacity: 0.1;
+                display: none;
+                position: absolute;
+                left: 50%;
+                top: 0;
+
+                &:before {
+                    content: "";
+                    width: (715/16rem);
+                    height: (715/16rem);
+                    border: 2px solid var(--primary);
+                    border-radius: 50%;
+                    opacity: 0.6;
+                    position: absolute;
+                    display: block;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                &:after {
+                    content: "";
+                    width: (963/16rem);
+                    height: (963/16rem);
+                    border: 2px solid var(--primary);
+                    border-radius: 50%;
+                    opacity: 0.3;
+                    position: absolute;
+                    display: block;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    }
+
+    /* Tablet - 768px */
+    @media only screen and (min-width: 48rem) {
+        #cs-footer-1291 {
+            .cs-wrapper {
+                row-gap: 0;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                column-gap: (88/16rem);
+                row-gap: (40/16rem);
+            }
+
+            .cs-nav {
+                width: auto;
+            }
+
+            .cs-bottom {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+
+            .cs-copyright {
+                text-align: left;
+                width: auto;
+                margin-right: auto;
+            }
+
+            .cs-credit {
+                text-align: right;
+                margin-right: 0;
+                margin-left: auto;
+            }
+
+            .cs-floater {
+                display: block;
+            }
+        }
+    }
+
+    /* Small Desktop - 1024px */
+    @media only screen and (min-width: 64rem) {
+        #cs-footer-1291 {
+            .cs-container {
+                max-width: (1280/16rem);
+                flex-wrap: nowrap;
+                /* align everything to the right */
+                justify-content: flex-end;
+                column-gap: clamp(2.5rem, 6vw, 5.25rem);
+            }
+
+            .cs-logo-group {
+                width: 30%;
+                max-width: (387/16rem);
+                /* pushes away from everything to the right */
+                margin-right: auto;
+            }
+
+            .cs-text {
+                width: 100%;
+            }
+
+            .cs-graphic {
+                display: block;
+            }
+        }
+    }
+
+    /* Dark Mode */
+    @media only screen and (min-width: 0rem) {
+        body.dark-mode {
+            #cs-footer-1291 {
+                .cs-text,
+                .cs-link,
+                .cs-header,
+                .cs-nav-link,
+                .cs-copyright,
+                .cs-copyright-link {
+                    color: var(--bodyTextColorWhite);
+                    opacity: 0.9;
+                }
+
+                .cs-link,
+                .cs-nav-link {
+                    opacity: 0.7;
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+</style>

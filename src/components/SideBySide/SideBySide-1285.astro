@@ -17,7 +17,7 @@ import photo6 from "@assets/photos/henrys-professional-painting-content-home-08-
                     loading="lazy"
                     decoding="async"
                     src={photo1}
-                    alt="freshly painted Spanish-style home exterior in La Mesa"
+                    alt="freshly painted Spanish-style home exterior in Chula Vista"
                     width={244}
                     height={200}
                 />
@@ -72,19 +72,8 @@ import photo6 from "@assets/photos/henrys-professional-painting-content-home-08-
                     height={190}
                 />
             </div>
-            <!--Stripe background-->
-            <picture class="cs-waves-wrapper">
-                <img
-                    class="cs-waves"
-                    loading="lazy"
-                    decoding="async"
-                    src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/svg-waves.svg"
-                    alt=""
-                    width="650"
-                    height="933"
-                    aria-hidden="true"
-                />
-            </picture>
+            <!--Brush stroke decoration-->
+            <img class="cs-brush-accent" src="/assets/decorations/brush-stroke-800w.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="800" height="800" />
         </div>
         <div class="cs-content">
             <span class="cs-topper">Our Specialization</span>
@@ -92,26 +81,25 @@ import photo6 from "@assets/photos/henrys-professional-painting-content-home-08-
                 Professional Painting for Your Home or Business
             </h2>
             <p class="cs-text">
-                At Henry's Professional Painting, we pride ourselves on
-                delivering exceptional painting services to the La Mesa and
-                greater San Diego, CA area. Established in 1987, our
-                family-owned business has grown through dedication,
-                craftsmanship, and a commitment to customer satisfaction.
-                Whether it's a fresh coat of paint for your home's interior or a
-                vibrant new look for your business's exterior, our team of
+                At Cornerstone Painting Co., we take pride in delivering
+                exceptional painting services throughout the greater
+                San Diego, CA area. Established in 1987, our company has built its
+                reputation on dedication, craftsmanship, and a genuine commitment
+                to customer satisfaction.
+                Whether you need a fresh interior update for your home or a bold
+                new look for your commercial property, our team of
                 licensed, insured, and bonded professionals ensures every
-                project is completed with precision and care.
+                project is handled with precision and care.
             </p>
             <p class="cs-text">
-                Our expertise spans residential and commercial painting, with
-                services tailored to meet the unique needs of each customer. We
-                offer free color consultations to help you choose the perfect
-                palette and eco-friendly solutions that are kind to the
-                environment. With over 37 years of experience, we understand the
-                importance of personalized service and attention to detail. From
-                the first stroke to the final touch, we're here to turn your
-                vision into reality, providing a seamless experience from start
-                to finish.
+                Our expertise covers both residential and commercial painting, with
+                services customized to fit the unique needs of every client. We
+                provide complimentary color consultations to help you find the perfect
+                palette, and we use low-VOC, eco-conscious products whenever possible.
+                With over 37 years of experience, we understand that great results
+                come from attentive service and careful attention to detail. From
+                surface preparation to the final coat, we're committed to making
+                your vision a reality — on time and within budget.
             </p>
             <a href="/contact/" class="cs-button-solid">Get in Touch</a>
         </div>
@@ -195,7 +183,8 @@ import photo6 from "@assets/photos/henrys-professional-painting-content-home-08-
                 min-width: (150/16rem);
                 padding: 0 (24/16rem);
                 background-color: var(--primary);
-                border-radius: (4/16rem);
+                border-radius: 0 (16/16rem) 0 (16/16rem);
+                overflow: hidden;
                 display: inline-block;
                 position: relative;
                 z-index: 1;
@@ -212,7 +201,6 @@ import photo6 from "@assets/photos/henrys-professional-painting-content-home-08-
                     top: 0;
                     left: 0;
                     z-index: -1;
-                    border-radius: (4/16rem);
                     transition: width 0.3s;
                 }
 
@@ -234,7 +222,7 @@ import photo6 from "@assets/photos/henrys-professional-painting-content-home-08-
             }
 
             .cs-picture {
-                border-radius: (8/16em);
+                border-radius: (8/16em) (22/16em) (8/16em) (22/16em);
                 overflow: hidden;
                 position: absolute;
 
@@ -272,6 +260,7 @@ import photo6 from "@assets/photos/henrys-professional-painting-content-home-08-
             .cs-picture4 {
                 width: (310/16em);
                 height: (343/16em);
+                border-radius: 0 (30/16em) 0 (30/16em);
                 box-shadow: 0px 24px 52px 0px rgba(0, 0, 0, 0.38);
                 top: (294/16em);
                 right: 0;
@@ -292,25 +281,16 @@ import photo6 from "@assets/photos/henrys-professional-painting-content-home-08-
                 right: (33/16em);
             }
 
-            .cs-waves-wrapper {
-                /* changes to 100% at desktop */
-                width: 100vw;
-                height: 150%;
+            .cs-brush-accent {
+                width: 75%;
+                height: auto;
+                opacity: 0.10;
                 position: absolute;
-                bottom: 0;
-                left: 50%;
+                bottom: -5%;
+                left: -8%;
                 z-index: -1;
-                /* changes at desktop */
-                transform: translateX(-50%);
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
+                transform: rotate(-20deg);
+                pointer-events: none;
             }
         }
     }
@@ -336,20 +316,13 @@ import photo6 from "@assets/photos/henrys-professional-painting-content-home-08-
             }
 
             .cs-picture1 {
-                border-radius: 0 0 (16/16rem) (16/16rem);
+                border-radius: 0 (22/16rem) (22/16rem) (22/16rem);
             }
 
             .cs-picture6 {
-                border-radius: 0;
+                border-radius: (22/16rem) 0 (22/16rem) 0;
             }
 
-            .cs-waves-wrapper {
-                width: 110%;
-                height: 100%;
-                left: 50%;
-                bottom: 50%;
-                transform: translate(-50%, 50%);
-            }
         }
     }
 
@@ -361,14 +334,16 @@ import photo6 from "@assets/photos/henrys-professional-painting-content-home-08-
                 /* prevents padding and border from affecting height and width */
                 box-sizing: border-box;
             }
+        }
+    }
 
-            .cs-waves-wrapper {
-                width: (692/16rem);
-                height: initial;
-                left: (-88/16rem);
-                top: 0;
-                bottom: 0;
-                transform: none;
+    /* Dark Mode */
+    @media only screen and (min-width: 0rem) {
+        body.dark-mode {
+            #sbs-1285 {
+                .cs-brush-accent {
+                    opacity: 0.05;
+                }
             }
         }
     }

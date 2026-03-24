@@ -5,15 +5,63 @@ import { getImage } from "astro:assets";
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
-import CTA from "@components/CTA/CTASimple.astro";
+import ServiceIntro from "@components/ServiceIntro/ServiceIntro.astro";
+import ServiceList from "@components/ServiceList/ServiceList.astro";
+import ProcessSteps from "@components/ProcessSteps/ProcessSteps.astro";
+import Reviews from "@components/Reviews/Reviews-1672.astro";
 
 // Images
 import landingImage from "@assets/images/services/henrys-professional-painting-interior-kitchen-cabinet-painting-espresso-brown.jpg";
+import introImage from "@assets/images/services/henrys-professional-painting-interior-kitchen-cabinet-painting-espresso-brown.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="Interior House Painting | Walls, Ceilings & Cabinets" description="Transform your home's interior with expert painting from Henry's Professional Painting. We handle walls, ceilings, trim, and cabinet painting in San Diego and La Mesa." heroImage={optimizedImage}>
+<BaseLayout title="Interior House Painting | Walls, Ceilings & Cabinets" description="Transform your home's interior with expert painting from Cornerstone Painting Co. We handle walls, ceilings, trim, and cabinet painting throughout San Diego." heroImage={optimizedImage}>
 	<Banner title="Interior House Painting" image={optimizedImage} />
-	<!-- Page content goes here -->
-	<CTA />
+
+	<ServiceIntro
+		topper="Interior Residential Painting"
+		title="Walls That Set the Tone for Your Home"
+		paragraphs={[
+			"The colors inside your home shape how every room feels. Whether you're refreshing a single bedroom or repainting your entire interior, our team delivers clean lines, smooth finishes, and careful attention to every corner. We protect your floors, furniture, and fixtures — and leave the space ready to live in.",
+			"From kitchen cabinets that need a modern update to ceilings with water stain damage, we handle the prep work most painters skip. Every project starts with a free color consultation so you're confident in your choices before we open a single can."
+		]}
+		image={introImage}
+		imageAlt="freshly painted kitchen cabinets in espresso brown finish"
+		imagePosition="right"
+	/>
+
+	<ServiceList
+		topper="What We Paint"
+		title="Interior Services"
+		background="light"
+		columns={2}
+		items={[
+			{ heading: "Walls & Whole Rooms", text: "Full room repaints with meticulous edge work and even coverage, top to bottom." },
+			{ heading: "Ceilings", text: "Flat, textured, or vaulted — we match the right product to every ceiling type." },
+			{ heading: "Trim & Baseboards", text: "Crisp, clean lines on crown molding, door frames, and window casings." },
+			{ heading: "Cabinet Refinishing", text: "A factory-smooth finish that brings dated cabinetry back to life." },
+			{ heading: "Accent Walls", text: "Bold color, subtle texture, or a statement finish — applied with precision." },
+			{ heading: "Drywall Repair & Prep", text: "We patch, sand, and prime so the final coat looks flawless on every surface." }
+		]}
+	/>
+
+	<ProcessSteps
+		title="How Your Interior Project Works"
+		steps={[
+			{ number: "01", title: "Color Consultation", text: "We help you choose the right colors and finishes for your space — no guesswork." },
+			{ number: "02", title: "Surface Prep & Protection", text: "Furniture covered, floors masked, surfaces cleaned, sanded, and primed." },
+			{ number: "03", title: "Painting", text: "Premium paints applied with care — multiple coats where needed for full, even coverage." },
+			{ number: "04", title: "Final Walkthrough", text: "We inspect every room with you before cleanup to make sure every detail is right." }
+		]}
+	/>
+
+	<Reviews limit={2} />
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
+
+<style>
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+</style>

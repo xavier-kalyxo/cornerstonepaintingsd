@@ -11,7 +11,7 @@ import "@styles/markdown.less";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FeaturedPost from "@components/FeaturedPost/FeaturedPost.astro";
 import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
-import CTA from "@components/CTA/CTASimple.astro";
+
 
 const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author } = post.data;
@@ -90,10 +90,14 @@ const blogPostingSchema = getBlogPostingSchema(
 		</aside>
 	</div>
 
-	<CTA />
+	<div class="footer-spacer" aria-hidden="true"></div>
 </BaseLayout>
 
 <style lang="less">
+	.footer-spacer {
+		padding-bottom: calc(150 / 16 * 1rem);
+	}
+
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0em) {
 		.blog-container {

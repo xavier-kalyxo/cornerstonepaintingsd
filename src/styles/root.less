@@ -62,6 +62,7 @@ h6 {
 p {
 	text-wrap: pretty;
 }
+
 h1,
 h2,
 h3,
@@ -86,28 +87,28 @@ h6 {
 @media only screen and (min-width: 0em) {
 	:root {
 		// Brand Core
-		--brand-red: #EB1A1F;
-		--brand-red-hover: #C51316;
-		--rich-black: #1C1C1C;
+		--brand-red: #C8511A;
+		--brand-red-hover: #B84A12;
+		--rich-black: #2B2B2B;
 		--warm-white: #F5F3F1;
 		--steel: #3D3D3D;
 		--slate: #6B6869;
 		--concrete: #E2DED9;
 
 		// Semantic aliases (backward compat with existing components)
-		--primary: #EB1A1F;
-		--primaryLight: #C51316;
-		--secondary: #1C1C1C;
+		--primary: #C8511A;
+		--primaryLight: #B84A12;
+		--secondary: #2B2B2B;
 		--secondaryLight: #3D3D3D;
-		--headerColor: #1C1C1C;
+		--headerColor: #2B2B2B;
 		--bodyTextColor: #3D3D3D;
 		--bodyTextColorWhite: #F5F3F1;
 
 		// Section backgrounds
 		--bg-primary: #FFFFFF;
 		--bg-secondary: #F5F3F1;
-		--bg-dark: #1C1C1C;
-		--bg-cta: #EB1A1F;
+		--bg-dark: #2B2B2B;
+		--bg-cta: #C8511A;
 
 		// Typography
 		/* 12px - 14px */
@@ -124,7 +125,7 @@ h6 {
 		--space-xl: 6rem;
 
 		// Buttons
-		--btn-radius: 3px;
+		--btn-radius: 0 0.75rem 0 0.75rem;
 		--btn-font-size: 0.8125rem;
 		--btn-letter-spacing: 0.06em;
 
@@ -218,7 +219,8 @@ button {
 <--- -------------------------- -*/
 
 @media only screen and (min-width: 0em) {
-	// Brand button base
+
+	// Brand button base — brush stroke background experiment
 	.cs-button-solid {
 		font-family: var(--font-body), sans-serif;
 		font-size: var(--btn-font-size);
@@ -228,34 +230,48 @@ button {
 		text-transform: uppercase;
 		text-decoration: none;
 		letter-spacing: var(--btn-letter-spacing);
-		padding: 10px 22px;
-		border-radius: var(--btn-radius);
+		padding: 14px 34px;
 		color: #fff;
-		background-color: var(--primary);
+		background: url('/assets/decorations/btn-brush-stroke.svg') center / 110% 140% no-repeat !important;
+		background-color: transparent !important;
 		border: none;
+		border-radius: 0 !important;
+		overflow: visible !important;
 		display: inline-block;
 		position: relative;
 		z-index: 1;
 		box-sizing: border-box;
+		transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s !important;
 
 		&:before {
+			display: none !important;
+		}
+
+		&:after {
 			content: "";
 			position: absolute;
-			height: 100%;
-			width: 0%;
-			background: #000;
-			opacity: 1;
-			top: 0;
-			left: 0;
+			inset: 0;
+			background: inherit;
+			filter: blur(12px) brightness(0.7);
+			opacity: 0;
 			z-index: -1;
-			border-radius: var(--btn-radius);
-			transition: width 0.3s;
+			transition: opacity 0.35s, transform 0.35s;
+			transform: translateY(4px) scale(0.95);
 		}
 
 		&:hover {
-			&:before {
-				width: 100%;
+			transform: scale(1.06) rotate(-1deg);
+			filter: brightness(1.08) saturate(1.2);
+
+			&:after {
+				opacity: 0.45;
+				transform: translateY(6px) scale(1);
 			}
+		}
+
+		&:active {
+			transform: scale(0.97) rotate(0deg);
+			transition-duration: 0.1s;
 		}
 	}
 
@@ -268,17 +284,59 @@ button {
 		text-transform: uppercase;
 		text-decoration: none;
 		letter-spacing: var(--btn-letter-spacing);
-		padding: 10px 22px;
-		border-radius: var(--btn-radius);
-		color: var(--rich-black);
-		background-color: transparent;
-		border: 1.5px solid var(--rich-black);
+		padding: 14px 34px;
+		color: #fff;
+		background: none;
+		border: none;
+		border-radius: 0;
 		display: inline-block;
-		transition: background-color 0.3s, color 0.3s;
+		position: relative;
+		z-index: 1;
+		overflow: visible;
+		transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 160%;
+			height: 280%;
+			transform: translate(-50%, -50%);
+			background: url('/assets/decorations/btn-brush-secondary.webp') center / contain no-repeat;
+			z-index: -1;
+			pointer-events: none;
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 160%;
+			height: 280%;
+			transform: translate(-50%, -50%) translateY(4px) scale(0.95);
+			background: url('/assets/decorations/btn-brush-secondary.webp') center / contain no-repeat;
+			filter: blur(12px) brightness(0.7);
+			opacity: 0;
+			z-index: -2;
+			pointer-events: none;
+			transition: opacity 0.35s, transform 0.35s;
+		}
 
 		&:hover {
-			background-color: var(--rich-black);
-			color: #fff;
+			transform: scale(1.06) rotate(-1deg);
+			filter: brightness(0.85);
+
+			&:after {
+				opacity: 0.35;
+				transform: translate(-50%, -50%) translateY(6px) scale(1);
+			}
+		}
+
+		&:active {
+			transform: scale(0.97) rotate(0deg);
+			transition-duration: 0.1s;
 		}
 	}
 
@@ -370,6 +428,7 @@ button {
 
 /* Scale full website with the viewport width */
 @media only screen and (min-width: 2000px) {
+
 	body,
 	html {
 		font-size: 0.85vw;

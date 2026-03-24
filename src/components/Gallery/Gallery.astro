@@ -20,9 +20,10 @@ import port9 from "@assets/images/gallery/henrys-professional-painting-residenti
   <div class="cs-container">
     <span class="cs-topper">Our Portfolio</span>
     <h2 class="cs-title">
-      Recent Painting Projects by Henry's Professional Painting
+      Recent Painting Projects by Cornerstone Painting Co.
     </h2>
     <div class="cs-image-group">
+      <img class="cs-brush-accent" src="/assets/decorations/brush-stroke-800w.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="800" height="800" />
       <!-- Row 1-->
       <div class="cs-row cs-row-1">
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
@@ -154,6 +155,19 @@ import port9 from "@assets/images/gallery/henrys-professional-painting-residenti
         justify-content: center;
         align-items: flex-start;
         gap: (30/16em);
+        position: relative;
+      }
+
+      .cs-brush-accent {
+        width: 40%;
+        height: auto;
+        opacity: 0.08;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 0;
+        transform: translate(-50%, -50%) rotate(10deg);
+        pointer-events: none;
       }
 
       .cs-row {
@@ -167,6 +181,8 @@ import port9 from "@assets/images/gallery/henrys-professional-painting-residenti
       .cs-picture {
         display: block;
         position: relative;
+        border-radius: 0 (18/16em) 0 (18/16em);
+        overflow: hidden;
         img {
           width: 100%;
           height: 100%;
@@ -236,6 +252,10 @@ import port9 from "@assets/images/gallery/henrys-professional-painting-residenti
       #gallery {
         .cs-title {
           color: var(--bodyTextColorWhite);
+        }
+
+        .cs-brush-accent {
+          opacity: 0.04;
         }
       }
     }

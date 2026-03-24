@@ -6,7 +6,7 @@ import { getCurrentYear } from "@js/utils";
 // Data
 import { BUSINESS } from "@data/client";
 import navData from "@data/navData.json";
-import henrysLogo from "@assets/images/henrys-logo.jpg";
+import henrysLogo from "@assets/images/cornerstone-logo.png";
 
 const currentYear = getCurrentYear();
 ---
@@ -21,12 +21,12 @@ const currentYear = getCurrentYear();
 			>
 				<Image
 					src={henrysLogo}
-					alt="Henry's Professional Painting"
+					alt="Cornerstone Painting Co."
 					width={200}
 				/>
 			</a>
 			<p>
-				Serving San Diego and La Mesa with quality residential and commercial painting since 1987. Licensed, insured, and bonded for your peace of mind.
+				Serving Greater San Diego with quality residential and commercial painting since 1987. Licensed, insured, and bonded for your peace of mind.
 			</p>
 		</div>
 		<div class="right-section">
@@ -70,10 +70,7 @@ const currentYear = getCurrentYear();
 					</li>
 					<li>
 						<a href="/contact/">
-							{BUSINESS.address.lineOne}<br />
-							{BUSINESS.address.lineTwo}<br />
-							{BUSINESS.address.city}
-							{BUSINESS.address.state}
+							{BUSINESS.address.city}, {BUSINESS.address.state}
 							{BUSINESS.address.zip}
 						</a>
 					</li>
