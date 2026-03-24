@@ -12,7 +12,6 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import FeaturedPost from "@components/FeaturedPost/FeaturedPost.astro";
 import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
 
-
 const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author } = post.data;
 const { Content, headings } = await render(post);
@@ -216,16 +215,4 @@ const blogPostingSchema = getBlogPostingSchema(
 		}
 	}
 
-	/* Dark Mode */
-	@media only screen and (min-width: 0em) {
-		body.dark-mode {
-			.blog-article {
-				.blog-h1,
-				.blog-author,
-				.blog-date {
-					color: #f7f7f7;
-				}
-			}
-		}
-	}
 </style>

@@ -226,33 +226,4 @@ const hasImage = !!backgroundImage;
 		}
 	}
 
-	/* Dark Mode */
-	@media only screen and (min-width: 0rem) {
-		body.dark-mode {
-			#why-choose-us {
-				&:not(.cs-has-image) {
-					background-color: var(--accent);
-
-					.cs-topper {
-						color: var(--primaryLight);
-					}
-
-					.cs-title,
-					.cs-text,
-					.cs-h3 {
-						color: var(--bodyTextColorWhite);
-					}
-
-					.cs-point-text {
-						color: var(--bodyTextColorWhite);
-						opacity: 0.8;
-					}
-
-					.cs-point {
-						border-color: rgba(255, 255, 255, 0.1);
-					}
-				}
-			}
-		}
-	}
 </style>

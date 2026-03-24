@@ -154,35 +154,4 @@ const { topper, title, items, columns = 2, background = "light" } = Astro.props;
 		}
 	}
 
-	/* Dark Mode */
-	@media only screen and (min-width: 0rem) {
-		body.dark-mode {
-			#service-list {
-				&:not(.cs-dark) {
-					background-color: var(--accent);
-
-					.cs-topper {
-						color: var(--primaryLight);
-					}
-
-					.cs-title {
-						color: var(--bodyTextColorWhite);
-					}
-
-					.cs-item {
-						background-color: rgba(255, 255, 255, 0.05);
-					}
-
-					.cs-h3 {
-						color: var(--bodyTextColorWhite);
-					}
-
-					.cs-item-text {
-						color: var(--bodyTextColorWhite);
-						opacity: 0.8;
-					}
-				}
-			}
-		}
-	}
 </style>

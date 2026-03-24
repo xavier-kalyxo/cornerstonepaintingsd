@@ -389,9 +389,6 @@ padding-bottom: calc(250 / 16 * 1rem); to the section directly above the footer.
                 width: 100%;
                 height: auto;
 
-                &.dark {
-                    display: none;
-                }
             }
             .cs-link {
                 font-size: (14/16rem);
@@ -645,28 +642,4 @@ padding-bottom: calc(250 / 16 * 1rem); to the section directly above the footer.
         }
     }
 
-    /* Dark Mode */
-    @media only screen and (min-width: 0rem) {
-        body.dark-mode {
-            #cs-footer-1291 {
-                .cs-text,
-                .cs-link,
-                .cs-header,
-                .cs-nav-link,
-                .cs-copyright,
-                .cs-copyright-link {
-                    color: var(--bodyTextColorWhite);
-                    opacity: 0.9;
-                }
-
-                .cs-link,
-                .cs-nav-link {
-                    opacity: 0.7;
-                    &:hover {
-                        opacity: 1;
-                    }
-                }
-            }
-        }
-    }
 </style>

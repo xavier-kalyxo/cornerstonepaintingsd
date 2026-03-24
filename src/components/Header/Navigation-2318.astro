@@ -26,11 +26,6 @@ import cornerStoneLogo from "@assets/images/cornerstone-logo.png";
             &.scroll {
                 #cs-navigation {
                     transform: translateY(-3rem);
-
-                    #dark-mode-toggle {
-                        top: 0;
-                        right: 0;
-                    }
                 }
             }
         }
@@ -1171,9 +1166,21 @@ import cornerStoneLogo from "@assets/images/cornerstone-logo.png";
                 display: block;
             }
 
-            .cs-nav-button,
-            .cs-button-solid {
+            .cs-nav-button {
                 display: none;
+            }
+
+            .cs-nav {
+                margin-right: auto;
+            }
+
+            .cs-button-solid {
+                margin-right: 0;
+                padding: 14px 28px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex: none;
             }
 
             .cs-contact-wrapper {
@@ -1751,8 +1758,6 @@ import cornerStoneLogo from "@assets/images/cornerstone-logo.png";
                     // Make individual elements inert when scrolled
                     if (elements.topSocial)
                         elements.topSocial.inert = isScrolled;
-
-                    // Make dark mode toggle inert on mobile (650px) when scrolled, but not on tablet+
                     if (elements.darkModeToggle) {
                         elements.darkModeToggle.inert =
                             isDarkModeMobile() && isScrolled;
