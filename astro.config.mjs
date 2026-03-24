@@ -3,7 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 
 export default defineConfig({
-	site: "https://www.henryspropainting.com/", // update me!
+	site: "http://cornerstonepaintingsd.com", // update me!
 	redirects: {
 		"/interior-residential-painting/": "/residential-painting/interior/",
 		"/exterior-residential-painting/": "/residential-painting/exterior/",
