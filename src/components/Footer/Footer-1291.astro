@@ -33,7 +33,7 @@ padding-bottom: calc(250 / 16 * 1rem); to the section directly above the footer.
                     Schedule your free estimate today. Let Cornerstone bring new
                     life to your home or business.
                 </h2>
-                <a href={`tel:${BUSINESS.phoneForTel}`} class="cs-button-solid"
+                <a href={`tel:${BUSINESS.phoneForTel}`} class="cs-button-secondary"
                     >Call {BUSINESS.phoneFormatted}</a
                 >
             </div>
@@ -245,6 +245,28 @@ padding-bottom: calc(250 / 16 * 1rem); to the section directly above the footer.
                 margin: 0;
                 color: var(--bodyTextColorWhite);
                 text-wrap: pretty;
+            }
+
+            .cs-button-secondary {
+                padding: 14px 34px;
+                font-size: (16/16rem);
+                white-space: nowrap;
+
+                &:before {
+                    top: 60%;
+                    width: 140%;
+                    height: 500%;
+                    transform: translate(-50%, -50%) rotate(12deg) scaleX(-1);
+                    background-size: 100% 100%;
+                }
+
+                &:after {
+                    top: 60%;
+                    width: 140%;
+                    height: 500%;
+                    transform: translate(-50%, -50%) rotate(12deg) scaleX(-1) translateY(4px) scale(0.95);
+                    background-size: 100% 100%;
+                }
             }
 
             .cs-button-solid {
