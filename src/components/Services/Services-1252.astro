@@ -47,17 +47,17 @@ const services = [
 <section id="services-1252">
     <div class="cs-container">
         <div class="cs-content">
-            <div class="cs-flex-group">
-                <span class="cs-topper">Our Services</span>
+            <div class="cs-flex-group reveal-fade-up">
+                <span class="cs-topper cs-topper-brush"><span>Our Services</span></span>
                 <h2 class="cs-title">Professional Painting Services in San Diego</h2>
             </div>
-            <p class="cs-text">
+            <p class="cs-text reveal-fade-up">
                 From residential interiors to commercial exteriors, Cornerstone
                 Painting Co. delivers quality craftsmanship backed by
                 decades of experience. Licensed, insured, and trusted since 1987.
             </p>
         </div>
-        <ul class="cs-card-group">
+        <ul class="cs-card-group stagger-parent">
             {services.map((service) => (
                 <li class="cs-item">
                     <a href={service.href} class="cs-link">
@@ -152,7 +152,7 @@ const services = [
                     .cs-item-background {
                         img {
                             opacity: 0.4;
-                            transform: scale(1.3);
+                            transform: scale(1.05);
                         }
                     }
 

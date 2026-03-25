@@ -17,7 +17,7 @@ const { title, image } = Astro.props;
 ---
 
 <section id="int-hero">
-	<h1 id="home-h">{title}</h1>
+	<h1 id="home-h" class="cs-topper-brush reveal-fade-up"><span>{title}</span></h1>
 
 	<Picture src={image.src} width={image.attributes.width} height={image.attributes.height} formats={["avif", "webp"]} alt="" priority />
 </section>
@@ -73,13 +73,20 @@ const { title, image } = Astro.props;
 			h1 {
 				font-size: var(--headerFontSize);
 				text-align: center;
-				width: 96%;
-				max-width: (500/16rem);
+				/* Removed forced width: 96% so cs-topper-brush's width: fit-content can do its job */
+				max-width: min(96vw, 500/16rem);
+				padding: 0 (24/16rem);
 				margin: 0 auto;
 				margin-top: (70/16rem);
 				margin-bottom: (30/16rem);
 				color: #fff;
 				position: relative;
+
+				&.cs-topper-brush::after {
+					/* Overrides global brush to be white and slightly more visible against the dark tint */
+					filter: brightness(0) invert(1);
+					opacity: 0.18;
+				}
 			}
 
 			p {

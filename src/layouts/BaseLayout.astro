@@ -60,5 +60,50 @@ const { description, title, heroImage } = Astro.props as Props;
 			<slot />
 		</main>
 		<Footer />
+
+		<script>
+			let currentObserver: IntersectionObserver | null = null;
+
+			function initObserver() {
+				// Mark body as ready for motion (No-JS Fallback)
+				document.body.classList.add('motion-ready');
+
+				const observerOptions = {
+					root: null,
+					rootMargin: '0px',
+					threshold: 0.1
+				};
+
+				currentObserver = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('in-view');
+							currentObserver?.unobserve(entry.target);
+						}
+					});
+				}, observerOptions);
+
+				// Query elements to observe
+				const elements = document.querySelectorAll('.reveal-fade-up, .reveal-scale-in, .stagger-parent > *');
+				elements.forEach(el => {
+					// Auto-apply reveal-fade-up to children of stagger-parent to keep markup clean
+					if (el.parentElement?.classList.contains('stagger-parent')) {
+						el.classList.add('reveal-fade-up');
+					}
+					currentObserver?.observe(el);
+				});
+			}
+
+			// Initialize on load and on view transitions
+			document.addEventListener('astro:page-load', initObserver);
+
+			// Cleanup observer before swapping pages
+			document.addEventListener('astro:before-swap', () => {
+				if (currentObserver) {
+					currentObserver.disconnect();
+					currentObserver = null;
+				}
+			});
+		</script>
 	</body>
 </html>

@@ -46,11 +46,11 @@ const displayedReviews = limit ? reviews.slice(0, limit) : reviews;
 <!-- ============================================ -->
 <section id="reviews-1672">
     <div class="cs-container">
-        <div class="cs-content">
-            <span class="cs-topper">Testimonials</span>
+        <div class="cs-content reveal-fade-up">
+            <span class="cs-topper cs-topper-brush"><span>Testimonials</span></span>
             <h2 class="cs-title">Our Customer Reviews</h2>
         </div>
-        <ul class="cs-card-group">
+        <ul class="cs-card-group stagger-parent">
             {displayedReviews.map((review) => (
                 <li class="cs-item">
                     <div class="cs-flex-group">
