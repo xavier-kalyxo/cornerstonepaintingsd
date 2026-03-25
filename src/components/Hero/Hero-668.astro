@@ -12,8 +12,8 @@ import heroImg from "@assets/images/hero/cornerstone-painting-co-hero-interior-r
         <div class="cs-content">
             <h1 class="cs-title">Paint Your House Like A Dream Home</h1>
             <p class="cs-text">
-                Greater San Diego’s trusted painting professionals since 1987. Licensed,
-                insured, and bonded — delivering lasting results for
+                Greater San Diego’s trusted painting professionals since 1987.
+                Licensed, insured, and bonded — delivering lasting results for
                 residential and commercial properties.
             </p>
             <div class="cs-button-group">
@@ -26,8 +26,15 @@ import heroImg from "@assets/images/hero/cornerstone-painting-co-hero-interior-r
                     id="video-trigger"
                     aria-label="Watch our company video"
                 >
-                    <svg class="cs-play-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <polygon points="4,2 18,10 4,18" />
+                    <svg
+                        class="cs-play-icon"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                    >
+                        <polygon points="4,2 18,10 4,18"></polygon>
                     </svg>
                     Watch Video
                 </button>
@@ -64,21 +71,40 @@ import heroImg from "@assets/images/hero/cornerstone-painting-co-hero-interior-r
 <dialog id="video-modal" aria-label="Company video">
     <div class="cs-modal-content">
         <button class="cs-modal-close" type="button" aria-label="Close video">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
+            <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                aria-hidden="true"
+            >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
         </button>
-        <video id="hero-video" controls playsinline preload="none" width="1920" height="1080"></video>
+        <video
+            id="hero-video"
+            controls
+            playsinline
+            preload="none"
+            width="1920"
+            height="1080"></video>
     </div>
 </dialog>
 
 <script>
     document.addEventListener("astro:page-load", () => {
         const trigger = document.getElementById("video-trigger");
-        const dialog = document.getElementById("video-modal") as HTMLDialogElement;
+        const dialog = document.getElementById(
+            "video-modal",
+        ) as HTMLDialogElement;
         const video = document.getElementById("hero-video") as HTMLVideoElement;
-        const closeBtn = dialog?.querySelector(".cs-modal-close") as HTMLButtonElement;
+        const closeBtn = dialog?.querySelector(
+            ".cs-modal-close",
+        ) as HTMLButtonElement;
         if (!trigger || !dialog || !video || !closeBtn) return;
 
         const videoSrc = "/assets/video/cornerstone-painting-co.mp4";
@@ -125,7 +151,7 @@ import heroImg from "@assets/images/hero/cornerstone-painting-co-hero-interior-r
             text-align: center;
             /* 200px - 300px top - leaving extra space for the navigation */
             /* 60px - 150px  bottom */
-            padding: clamp(12.5rem, 25.95vw, 18.75rem) (16/16rem)
+            padding: clamp(12.5rem, 25.95vw, 14.75rem) (16/16rem)
                 clamp(3.75rem, 14.82vw, 9.375rem);
             position: relative;
             z-index: 1;
@@ -262,7 +288,9 @@ import heroImg from "@assets/images/hero/cornerstone-painting-co-hero-interior-r
                 position: relative;
                 z-index: 1;
                 box-sizing: border-box;
-                transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s;
+                transition:
+                    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    filter 0.3s;
 
                 &:before {
                     content: "";
@@ -272,7 +300,8 @@ import heroImg from "@assets/images/hero/cornerstone-painting-co-hero-interior-r
                     width: 140%;
                     height: 500%;
                     transform: translate(-50%, -50%) rotate(12deg) scaleX(-1);
-                    background: url('/assets/decorations/btn-brush-secondary.webp') center / 100% 100% no-repeat;
+                    background: url("/assets/decorations/btn-brush-secondary.webp")
+                        center / 100% 100% no-repeat;
                     z-index: -1;
                     pointer-events: none;
                 }
@@ -284,13 +313,17 @@ import heroImg from "@assets/images/hero/cornerstone-painting-co-hero-interior-r
                     left: 50%;
                     width: 140%;
                     height: 500%;
-                    transform: translate(-50%, -50%) rotate(12deg) scaleX(-1) translateY(4px) scale(0.95);
-                    background: url('/assets/decorations/btn-brush-secondary.webp') center / 100% 100% no-repeat;
+                    transform: translate(-50%, -50%) rotate(12deg) scaleX(-1)
+                        translateY(4px) scale(0.95);
+                    background: url("/assets/decorations/btn-brush-secondary.webp")
+                        center / 100% 100% no-repeat;
                     filter: blur(12px) brightness(0.7);
                     opacity: 0;
                     z-index: -2;
                     pointer-events: none;
-                    transition: opacity 0.35s, transform 0.35s;
+                    transition:
+                        opacity 0.35s,
+                        transform 0.35s;
                 }
 
                 &:hover {
@@ -299,7 +332,8 @@ import heroImg from "@assets/images/hero/cornerstone-painting-co-hero-interior-r
 
                     &:after {
                         opacity: 0.35;
-                        transform: translate(-50%, -50%) rotate(12deg) scaleX(-1) translateY(6px) scale(1);
+                        transform: translate(-50%, -50%) rotate(12deg)
+                            scaleX(-1) translateY(6px) scale(1);
                     }
                 }
 
@@ -343,10 +377,10 @@ import heroImg from "@assets/images/hero/cornerstone-painting-co-hero-interior-r
                 padding-bottom: 0.25em;
 
                 &:nth-child(1) {
-                    background-image: url('/assets/decorations/paint-circle-slate.svg');
+                    background-image: url("/assets/decorations/paint-circle-slate.svg");
                 }
                 &:nth-child(2) {
-                    background-image: url('/assets/decorations/paint-circle-concrete.svg');
+                    background-image: url("/assets/decorations/paint-circle-concrete.svg");
 
                     .cs-desc,
                     .cs-number {
@@ -354,7 +388,7 @@ import heroImg from "@assets/images/hero/cornerstone-painting-co-hero-interior-r
                     }
                 }
                 &:nth-child(3) {
-                    background-image: url('/assets/decorations/paint-circle-dark.svg');
+                    background-image: url("/assets/decorations/paint-circle-dark.svg");
                 }
             }
 
